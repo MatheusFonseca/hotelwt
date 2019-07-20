@@ -1,0 +1,292 @@
+@import 'variables';
+@import 'base';
+@import 'functions';
+@import 'utilities';
+
+// Cabecalho
+.cabecalho {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: .5rem 0;
+  overflow: hidden;
+  background-color: $primary-color;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include respond-to('smaller'){
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  &__logo {
+    margin: 0 .75rem;
+
+    @include respond-to('smaller'){
+      margin: .5 .75rem;
+    }
+
+    &-link {
+      color: $light-color;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    font-weight: 500;
+    font-size: .9rem;
+
+    @include respond-to('smaller'){
+      margin: .5rem 0;
+      font-weight: 400;
+    }
+  }
+
+  &__link {
+    position: relative;
+    padding: .5rem .75rem;
+    color: $light-color;
+    transition: .4s all ease;
+    
+    &:hover {
+      color: $primary-color;
+    }
+    
+    &::before {
+      @include before-bg($light-color);
+      clip-path: inset(0% 100% 0% 0%);
+      transition: .4s clip-path ease;
+    }
+
+    &:hover::before {
+      clip-path: inset(0% 0% 0% 0%);
+    }
+  }
+}
+
+// Showcase
+.showcase {
+
+  position: relative;
+  height: calc(100vh - 45px); // Altura do viewport menos a altura do cabecalho
+  background: rgba(0,0,0,0.2);
+
+  @include respond-to('smaller'){
+    height: 90vh; // Fallback para navegadores que nao suportam calc
+    height: calc(100vh - 78px); // Altura do viewport menos a altura do cabecalho
+  }
+
+  &::before {
+    @include before-bg(url(/img/hotel-1.jpg) no-repeat center 90%/cover);
+    background-attachment: fixed;
+  }
+
+  &__content {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: $light-color;
+
+  }
+
+  &__sub-titulo {
+    font-size: 2rem;
+
+    @include respond-to('small'){
+      font-size: 1.5rem;
+    }
+    @include respond-to('small'){
+      font-size: 1.2rem;
+    }
+  }
+
+  &__titulo {
+    font-size: 7rem;
+
+    @include respond-to('small'){
+      font-size: 5rem;
+    }
+
+    @include respond-to('smaller'){
+      font-size: 4rem;
+    }
+  }
+
+  &__seta {
+    position: absolute;
+    bottom: 2rem;
+    left: calc(50% - 1rem);
+    color: $light-color;
+    animation: animacao-seta 3s forwards infinite ease-in-out;
+
+    &-icone {
+      font-size: 2rem;
+    }
+  }
+}
+
+// Seção Padrão Home
+.secao-home {
+  
+  background-color: $light-color;
+  padding: 4rem 0;
+
+  &__content {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 1fr;
+
+    @include respond-to('smaller'){
+      grid-template-columns: 1fr;
+      grid-auto-rows: auto;
+    }
+  }
+
+  &__img-principal {
+    height: 500px;
+    grid-row: 1 / span 2;
+
+    @include respond-to('small'){
+      height: 300px;
+      grid-row: 1 / span 1;
+      grid-column: 1 / span 2;
+    }
+  }
+
+  &__img-secundaria {
+    @include respond-to('smaller'){
+      display: none;
+    }
+  }
+
+  &__texto {
+    color: $dark-color;
+    position: relative; // position relative e z-index 1 para criar um novo contexto de pilha 
+    z-index: 1; // "stacking context", para a animação do botão funcionar da maneira correta
+  }
+
+  // Modificadores
+  &--right {
+    .secao-home__img-principal {
+      grid-column: 2;
+
+      @include respond-to('small'){
+        grid-column: 1 / span 2;
+      }
+    }
+  }
+
+  &--no-pt{
+    padding-top: 0;
+  }
+
+  // Setando as fotos
+    // Quarto
+  &__img-quarto:first-child {
+    background: url(/img/quarto-3.jpg) no-repeat center center/cover;
+  }
+
+  &__img-quarto:nth-child(2) {
+    background: url(/img/quarto-2.jpg) no-repeat center 30%/cover;
+  }
+
+    // Spa
+  &__img-spa:first-child {
+    background: url(/img/spa-1.jpg) no-repeat center center/cover;
+  }
+
+  &__img-spa:nth-child(2) {
+    background: url(/img/spa-2.jpg) no-repeat center center/cover;
+  }
+}
+
+.cidade {
+
+  padding: 3rem 0;
+  background: $primary-color;
+
+  &__content {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 2fr 1fr;
+
+    @include respond-to('medium'){
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include respond-to('small'){
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__img {
+    height: 400px;
+    grid-row: 2; // descendo uma linha
+    position: relative;
+    background: url(/img/salvador-3.jpg) no-repeat center center/cover;
+    animation: change-background 10s ease infinite;
+
+    @include respond-to('small'){
+      height: 300px;
+      grid-row: auto;
+    }
+  }
+
+  &__icones {
+    display: grid;
+    grid-row: 2; // descendo uma linha
+    grid-template-columns: repeat(2, 1fr);
+    color: $light-color;
+
+    @include respond-to('small'){
+      grid-row: auto;
+      gap: 1.5rem;
+    }
+
+    @include respond-to('smaller'){
+      gap: 2.2rem;
+    }
+  }
+
+  &__icone {
+    margin-bottom: .5rem;
+    font-size: 2.5rem;
+
+    @include respond-to('medium'){
+      font-size: 2rem;
+    }
+  }
+
+  &__caixa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 .5rem;
+
+    &:last-child {
+      grid-column: 1 / span 2;
+    }
+  }
+
+  &__ponto {
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: center;
+
+    @include respond-to('smaller'){
+      font-size: 1rem;
+    }
+  }
+
+}
+
+

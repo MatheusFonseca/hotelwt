@@ -1,0 +1,49 @@
+
+$font-stack: 'Raleway', sans-serif;
+
+// Cores
+$primary-color: #112d4e;
+$secondary-color: #3f72af;
+$dark-color: #222831;
+$medium-color: #dbe2ef;
+$light-color: #f9f7f7;
+
+// KeyFrames
+@keyframes animacao-seta {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(1rem);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes change-background {
+    0% {
+        background: url(/img/salvador-3.jpg) no-repeat center center/cover;
+    }
+    49% {
+        background: url(/img/salvador-3.jpg) no-repeat center center/cover;
+    }
+    50% {
+        background: url(/img/salvador-2.jpg) no-repeat center center/cover;
+    }
+    99% {
+        background: url(/img/salvador-2.jpg) no-repeat center center/cover;
+    }
+    100% {
+        background: url(/img/salvador-3.jpg) no-repeat center center/cover;
+    }
+  }
+
+// Map para os breakpoints das media queries
+$breakpoints: (
+    'smaller': (max-width: 580px),
+    'small': (max-width: 768px),
+    'medium': (max-width: 915px),
+    'large': (max-width: 1200px),
+);
+

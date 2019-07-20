@@ -1,0 +1,26 @@
+
+// Mixin para media queries
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media #{inspect(map-get($breakpoints, $breakpoint))} {
+      @content;
+    }
+  }
+  
+  @else {
+    @error 'No value found for `#{$breakpoint}`. '
+          + 'Please make sure it is defined in `$breakpoints` map.';
+  }
+}
+
+// Mixin para backgrounds com before
+@mixin before-bg($background, $content: '') {
+  content: $content;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background: $background;
+}
