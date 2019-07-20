@@ -298,7 +298,7 @@ ul {
 @media (max-width: 580px) {
   .showcase {
     height: 75vh;
-    height: calc(100vh - 78px);
+    /*height: calc(100vh - 78px);*/
   }
 }
 
