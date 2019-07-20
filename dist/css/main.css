@@ -453,6 +453,12 @@ ul {
   background: url(/img/quarto-3.jpg) no-repeat center center/cover;
 }
 
+@media (max-width: 580px) {
+  .secao-home__img-quarto:first-child {
+    background: url(/img/quarto-3.jpg) no-repeat center left/cover;
+  }
+}
+
 .secao-home__img-quarto:nth-child(2) {
   background: url(/img/quarto-2.jpg) no-repeat center 30%/cover;
 }
