@@ -455,7 +455,7 @@ ul {
 
 @media (max-width: 580px) {
   .secao-home__img-quarto:first-child {
-    background: url(/img/quarto-3.jpg) no-repeat center left/cover;
+    background: url(/img/quarto-3.jpg) no-repeat 0% 0%/cover;
   }
 }
 
@@ -469,7 +469,7 @@ ul {
 
 @media (max-width: 580px) {
   .secao-home__img-spa:first-child {
-    background: url(/img/spa-1.jpg) no-repeat center left/cover;
+    background: url(/img/spa-1.jpg) no-repeat 0% 0%/cover;
   }
 }
 
